@@ -5,6 +5,9 @@ from bs4 import BeautifulSoup
 import asyncio
 import discord
 from datetime import date
+import os
+from dotenv import load_dotenv
+load_dotenv('.env')
 
 bot = commands.Bot(command_prefix="!")
 
@@ -46,7 +49,7 @@ async def timer():
             # scrape preview
             preview = news_card.find('div', class_="preview").text.strip()
 
-            with open('/home/rzoo/vs code/practice/animenews.txt', 'r') as f:
+            with open('animenews.txt', 'r') as f:
                       if links not in f.read() and time == str(date.today()):
                         embed = discord.Embed(title=news_heading_text, url=links, description=preview)
                         embed.set_image(url=img_link)
@@ -79,7 +82,7 @@ async def timer():
             # scrape preview
             review_preview = review_card.find('div', class_="preview").text.strip()
 
-            with open('/home/rzoo/vs code/practice/animereviews.txt', 'r') as f:
+            with open('animereviews.txt', 'r') as f:
                       if review_links not in f.read() and review_time == str(date.today()):
                         review_embed = discord.Embed(title=review_heading_text, url=review_links, description=review_preview)
                         review_embed.set_image(url=review_img_link)
@@ -110,7 +113,7 @@ async def timer():
             # scrape preview
             interest_preview = interest_card.find('div', class_="preview").text.strip()
 
-            with open('/home/rzoo/vs code/practice/animeinterest.txt', 'r') as f:
+            with open('animeinterest.txt', 'r') as f:
                       if interest_links not in f.read() and interest_time == str(date.today()):
                         interest_embed = discord.Embed(title=interest_heading_text, url=interest_links, description=interest_preview + '\n' + 'tag: interest')
                         interest_embed.set_image(url=interest_img_link)
@@ -127,4 +130,4 @@ async def timer():
     await asyncio.sleep(2)
                     
 bot.loop.create_task(timer())
-bot.run('OTQxMDA1ODE1MzQ1NzQxODI0.YgPp9Q.9C4vdbDxj9sr7mc6Kds6pJHkpIY')
+bot.run(os.getenv('TOKEN'))
