@@ -1,2 +1,2 @@
-web: python ANIMENEWSBOT.py
-worker: python ANIMENEWSBOT.py
+web: python animenewsbot.py
+worker: python animenewsbot.py
