@@ -31,7 +31,6 @@ async def timer():
             # find heading
             news_heading = news_card.find('h3')
             news_heading_text = news_heading.text.strip()
-            print(news_heading_text)
 
 
             # Find link of the news
@@ -65,7 +64,6 @@ async def timer():
             # find heading
             review_heading = review_card.find('h3')
             review_heading_text = review_heading.text.strip()
-            print(review_heading_text)
 
             # Find link of the news
             review_half_link = review_heading.a['href']
@@ -127,7 +125,7 @@ async def timer():
 
               
 
-    await asyncio.sleep(900)
+        await asyncio.sleep(900)
                     
 bot.loop.create_task(timer())
 bot.run(os.getenv('TOKEN'))
