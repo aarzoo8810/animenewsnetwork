@@ -127,7 +127,7 @@ async def timer():
 
               
 
-    await asyncio.sleep(2)
+    await asyncio.sleep(900)
                     
 bot.loop.create_task(timer())
 bot.run(os.getenv('TOKEN'))
