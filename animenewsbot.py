@@ -6,8 +6,9 @@ import asyncio
 import discord
 from datetime import date
 import os
-# from dotenv import load_dotenv
-# load_dotenv('.env')
+from dotenv import load_dotenv
+
+load_dotenv('.env')
 
 bot = commands.Bot(command_prefix="!")
 
