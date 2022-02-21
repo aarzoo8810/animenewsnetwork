@@ -1,1 +1,1 @@
-worker: python animenewsbot.py
+worker: python main.py

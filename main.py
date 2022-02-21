@@ -50,12 +50,13 @@ async def timer():
             preview = news_card.find('div', class_="preview").text.strip()
 
             with open('animenews.txt', 'r') as f:
-                      if links not in f.read() and time == str(date.today()):
+                      if links not in f.read():
+                        with open('animenews.txt', 'a') as f1:
+                           f1.write(links + '\n')
+
                         embed = discord.Embed(title=news_heading_text, url=links, description=preview)
                         embed.set_image(url=img_link)
-                        with open('animenews.txt', 'a') as f:
-                           f.write(links + '\n')
-                           await channel.send(embed=embed)
+                        await channel.send(embed=embed)
                       else:
                           msg_sent=False
 
@@ -82,12 +83,13 @@ async def timer():
             review_preview = review_card.find('div', class_="preview").text.strip()
 
             with open('animereviews.txt', 'r') as f:
-                      if review_links not in f.read() and review_time == str(date.today()):
+                      if review_links not in f.read():
+                        with open('animereviews.txt', 'a') as f1:
+                           f1.write(review_links + '\n')
+
                         review_embed = discord.Embed(title=review_heading_text, url=review_links, description=review_preview)
                         review_embed.set_image(url=review_img_link)
-                        with open('animereviews.txt', 'a') as f:
-                           f.write(review_links + '\n')
-                           await channel.send(embed=review_embed)
+                        await channel.send(embed=review_embed)
                       else:
                           msg_sent=False
 
@@ -113,12 +115,14 @@ async def timer():
             interest_preview = interest_card.find('div', class_="preview").text.strip()
 
             with open('animeinterest.txt', 'r') as f:
-                      if interest_links not in f.read() and interest_time == str(date.today()):
+                      if interest_links not in f.read():
+                        with open('animeinterest.txt', 'a') as f1:
+                           f1.write(interest_links + '\n')
+
+
                         interest_embed = discord.Embed(title=interest_heading_text, url=interest_links, description=interest_preview + '\n' + 'tag: interest')
                         interest_embed.set_image(url=interest_img_link)
-                        with open('animeinterest.txt', 'a') as f:
-                           f.write(interest_links + '\n')
-                           await channel.send(embed=interest_embed)
+                        await channel.send(embed=interest_embed)
                       else:
                           msg_sent=False
 
